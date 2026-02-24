@@ -1,0 +1,418 @@
+/* ===== Layout ===== */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 16px 80px;
+}
+
+.page h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-bottom: 20px;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background: var(--green-700);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* ===== Empty state ===== */
+.empty-state {
+  text-align: center;
+  color: var(--gray-500);
+  padding: 40px 16px;
+  font-size: 0.95rem;
+}
+
+/* ===== Success message ===== */
+.success-msg {
+  background: var(--green-100);
+  color: var(--green-800);
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* ===== Table ===== */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+thead {
+  background: var(--green-50);
+}
+
+th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--green-700);
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--gray-100);
+}
+
+tbody tr:hover {
+  background: var(--green-50);
+}
+
+.rank-cell {
+  font-weight: 700;
+  text-align: center;
+  width: 40px;
+}
+
+.player-name-cell {
+  font-weight: 600;
+}
+
+.rating-cell {
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+/* ===== Forms ===== */
+.add-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.add-form input {
+  flex: 1;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: white;
+  color: var(--gray-900);
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  background: var(--green-600);
+  color: white;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--green-700);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+.btn-danger {
+  background: var(--red-500);
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+/* ===== Match form ===== */
+.match-form {
+  background: white;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 4px;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+}
+
+/* ===== Player list ===== */
+.player-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.player-card {
+  background: white;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.player-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.player-stats {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+.player-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.edit-form {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
+}
+
+.edit-form input {
+  flex: 1;
+}
+
+/* ===== Match history ===== */
+.match-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.match-card {
+  background: white;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.match-date {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+}
+
+.match-result {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.match-player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.match-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.winner .match-label {
+  background: var(--green-100);
+  color: var(--green-700);
+}
+
+.loser .match-label {
+  background: var(--red-100);
+  color: var(--red-500);
+}
+
+.match-name {
+  font-weight: 600;
+}
+
+.rating-change {
+  font-size: 0.8rem;
+  margin-left: auto;
+}
+
+.rating-change.positive {
+  color: var(--green-600);
+}
+
+.rating-change.negative {
+  color: var(--red-500);
+}
+
+.match-score {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+/* ===== Responsive - mobile bottom nav ===== */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    position: static;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    padding: 6px 8px;
+  }
+
+  .main-content {
+    padding: 16px 12px 40px;
+  }
+
+  .page h2 {
+    font-size: 1.25rem;
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .add-form {
+    flex-direction: column;
+  }
+
+  .player-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .player-actions {
+    width: 100%;
+  }
+
+  .player-actions button {
+    flex: 1;
+  }
+
+  .rating-change {
+    display: block;
+    margin-left: 32px;
+    margin-top: 2px;
+  }
+}
