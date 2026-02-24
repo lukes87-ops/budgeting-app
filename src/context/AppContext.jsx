@@ -20,6 +20,7 @@ function reducer(state, action) {
         id: generateId(),
         name: action.payload.name,
         rating: INITIAL_RATING,
+        rank: state.players.length + 1,
         wins: 0,
         losses: 0,
         createdAt: new Date().toISOString(),
@@ -37,9 +38,13 @@ function reducer(state, action) {
     }
 
     case 'DELETE_PLAYER': {
+      const deleted = state.players.find((p) => p.id === action.payload.id);
+      const remaining = state.players
+        .filter((p) => p.id !== action.payload.id)
+        .map((p) => (p.rank > deleted.rank ? { ...p, rank: p.rank - 1 } : p));
       return {
         ...state,
-        players: state.players.filter((p) => p.id !== action.payload.id),
+        players: remaining,
         matches: state.matches.filter(
           (m) =>
             m.winnerId !== action.payload.id &&
@@ -75,7 +80,8 @@ function reducer(state, action) {
         date: new Date().toISOString(),
       };
 
-      const updatedPlayers = state.players.map((p) => {
+      // Update ratings and win/loss counts
+      let updatedPlayers = state.players.map((p) => {
         if (p.id === winnerId) {
           return { ...p, rating: newRatingA, wins: p.wins + 1 };
         }
@@ -84,6 +90,23 @@ function reducer(state, action) {
         }
         return p;
       });
+
+      // Ladder rule: if winner is ranked below loser, move winner
+      // to the loser's position and shift everyone in between down
+      const winnerRank = winner.rank;
+      const loserRank = loser.rank;
+
+      if (winnerRank > loserRank) {
+        updatedPlayers = updatedPlayers.map((p) => {
+          if (p.id === winnerId) {
+            return { ...p, rank: loserRank };
+          }
+          if (p.rank >= loserRank && p.rank < winnerRank && p.id !== winnerId) {
+            return { ...p, rank: p.rank + 1 };
+          }
+          return p;
+        });
+      }
 
       return {
         ...state,

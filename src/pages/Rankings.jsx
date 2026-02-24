@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext';
 export default function Rankings() {
   const { state } = useApp();
 
-  const ranked = [...state.players].sort((a, b) => b.rating - a.rating);
+  const ranked = [...state.players].sort((a, b) => a.rank - b.rank);
 
   return (
     <div className="page">
